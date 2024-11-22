@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>
+      F1:{% block title %}
+        Formula 1
+      {% endblock %}
+    </title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet" />
+
+    <link type="text/css" rel="stylesheet" href="{% static 'css/theme.css' %}" />
+
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+  </head>
+
+  <body>
+    <div id="root" class="d-flex min-vh-100 flex-column">
+      <header class="sticky-top">
+        {% include 'header.html' %}
+      </header>
+
+      <main class="flex-grow-1 {% block mainClass %}
+
+        {% endblock %}">
+        {% block content %}
+          <div>
+            <p class="text-center py-3">Aun no hay contenido</p>
+          </div>
+        {% endblock %}
+      </main>
+
+      <footer class="container-fluid">
+        {% include 'footer.html' %}
+      </footer>
+    </div>
+  </body>
+</html>

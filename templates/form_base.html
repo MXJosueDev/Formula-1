@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block mainClass %}
+  d-flex align-items-center justify-content-center
+{% endblock %}
+
+{% block content %}
+  <div class="container h-100 my-4 mx-2 form-container bg-body-secondary text-dark py-2 rounded overflow-hidden">
+    <h2 class="text-center mb-3 dislay-4 w-100">
+      {% block form_title %}
+
+      {% endblock %}
+    </h2>
+
+    <hr />
+
+    <div>
+      {% block form %}
+
+      {% endblock %}
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends 'form_base.html' %}
+
+{% block title %}
+  Editando Piloto
+{% endblock %}
+
+{% block form_title %}
+  Editando Piloto: {{ pilot.name }} {{ pilot.last_name }}
+{% endblock %}
+
+{% block form %}
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="mb-3">
+      <label class="form-label" for="id_name">Nombre</label>
+      <input class="form-control" type="text" name="name" maxlength="100" required id="id_name" value="{{ pilot.name }}" />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label" for="id_last_name">Apellido</label>
+      <input class="form-control" type="text" name="last_name" maxlength="100" required id="id_last_name" value="{{ pilot.last_name }}" />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label" for="id_team">Equipo</label>
+      <select class="form-control" name="team" required id="id_team">
+        {% for team in teams %}
+          <option value="{{ team.id }}" {% if team.id == pilot.team.id %}selected{% endif %}>{{ team.name }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label" for="id_points">Puntos</label>
+      <input class="form-control" type="number" name="points" required id="id_points" value="{{ pilot.points }}" />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label" for="id_flag">Bandera</label>
+      <input class="form-control" type="file" name="flag" accept="image/*" id="id_flag" />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label" for="id_photo">Foto</label>
+      <input class="form-control" type="file" name="photo" accept="image/*" id="id_photo" />
+    </div>
+
+    <div class="d-flex justify-content-end">
+      <button type="submit" class="btn btn-primary">Editar Piloto</button>
+    </div>
+  </form>
+{% endblock %}

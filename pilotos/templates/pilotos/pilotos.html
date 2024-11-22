@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  Pilotos
+{% endblock %}
+
+{% block content %}
+  <div class="container mt-3 mb-5">
+    {% if request.user.is_authenticated %}
+      <div class="mb-4">
+        <a class="btn btn-primary" href="{% url 'crear_piloto' %}">Crear Piloto</a>
+      </div>
+    {% endif %}
+    <div class="contentWrapper contentWrapper-tr" style="--content-wrapper-border-width: 10px; --content-wrapper-border-color: white;">
+      <h2 class="display-2 fw-bold mb-3">Pilotos F1</h2>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 my-3 g-4">
+      {% for pilot in pilots %}
+        <div class="col">
+          <div class="h-100 contentWrapper contentWrapper-tr contentWrapper-hover d-flex flex-column" style="--content-wrapper-border-width: 0.125rem; --content-wrapper-border-color: white; --contentWrapper-hover-border-color: {{ pilot.team.team_color }};">
+            <div class="d-flex justify-content-between align-items-center">
+              <h6 class="display-4 fw-bold mb-0">#{{ forloop.counter }}</h6>
+
+              <div>
+                <p class="fs-5 fw-bold text-center mb-0 lh-1">{{ pilot.points }}</p>
+                <p class="fs-6 fw-bold text-bg-light text-center mb-0 w-100 rounded">PTS</p>
+              </div>
+            </div>
+
+            <hr class="my-3" />
+
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="d-flex">
+                <div class="vr vr-color" style="--vr-bg-color: {{ pilot.team.team_color }};"></div>
+                <div class="text-uppercase">
+                  <p class="mb-0 ms-3" style="font-size: 0.9rem;">{{ pilot.name }}</p>
+                  <p class="fs-4 fw-bold mb-0 ms-3">{{ pilot.last_name }}</p>
+                </div>
+              </div>
+
+              <div class="bg-white rounded overflow-hidden border">
+                <img src="/media/{{ pilot.flag }}" alt="{{ pilot.name }} Flag" style="height: 2em;" />
+              </div>
+            </div>
+
+            <hr class="mt-3 mb-2" />
+
+            <p class="mb-2 fs-6" style="opacity: 0.75;">{{ pilot.team.name }}</p>
+
+            <div class="pt-3 d-flex justify-content-center flex-grow-1" style="background: url({% static 'image/bg_pattern.png' %}); background-size: 8px;">
+              <img style="max-width: 50%;" src="/media/{{ pilot.photo }}" alt="{{ pilot.name }} Photo" />
+            </div>
+
+            {% if request.user.is_authenticated %}
+              <hr class="my-3" />
+
+              <div class="d-flex justify-content-end">
+                <a class="btn btn-outline-danger" href="{% url 'borrar_piloto' pilot.id %}">Borrar</a>
+                <a class="btn btn-secondary ms-2" href="{% url 'editar_piloto' pilot.id %}">Editar</a>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+*$py.class
+
+.vscode/
+
+venv/
+ENV/
+env/
+.venv/
+.env/
+
+*.sqlite3
+
+mediafiles/
+staticfiles/

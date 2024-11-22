@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  Equipos
+{% endblock %}
+
+{% block content %}
+  <div class="container mt-3 mb-5">
+    {% if request.user.is_authenticated %}
+      <div class="mb-4">
+        <a class="btn btn-primary" href="{% url 'crear_equipo' %}">Crear Equipo</a>
+      </div>
+    {% endif %}
+    <div class="contentWrapper contentWrapper-tr" style="--content-wrapper-border-width: 10px; --content-wrapper-border-color: white;">
+      <h2 class="display-2 fw-bold mb-3">Equipos F1</h2>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-2 my-3 g-4">
+      {% for team in teams %}
+        <div class="col">
+          <div class="h-100 contentWrapper contentWrapper-tr contentWrapper-hover d-flex flex-column" style="--content-wrapper-border-width: 0.125rem; --content-wrapper-border-color: white; --contentWrapper-hover-border-color: {{ team.team_color }};">
+            <div class="d-flex justify-content-between align-items-center">
+              <h6 class="display-4 fw-bold mb-0">#{{ forloop.counter }}</h6>
+
+              <div>
+                <p class="fs-5 fw-bold text-center mb-0 lh-1">{{ team.points }}</p>
+                <p class="fs-6 fw-bold text-bg-light text-center mb-0 w-100 rounded">PTS</p>
+              </div>
+            </div>
+
+            <hr class="my-3" />
+
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="d-flex">
+                <div class="vr vr-color" style="--vr-bg-color: {{ team.team_color }};"></div>
+                <h6 class="display-5 fw-bold mb-0 ms-3">{{ team.name }}</h6>
+              </div>
+
+              <div class="bg-white rounded">
+                <img src="/media/{{ team.logo }}" alt="{{ team.name }} Logo" style="height: 2em; aspect-ratio: 1/1;" />
+              </div>
+            </div>
+
+            <hr class="my-3" />
+
+            <div class="row row-cols-2 g-2 mb-3 flex-grow-1">
+              {% for pilot in team.pilot_set.all %}
+                <div class="col">
+                  <div class="contentWrapper contentWrapper-br rounded rounded-start-0 rounded-top-0 d-flex justify-content-between" style="--content-wrapper-padding-width: 0.3rem;">
+                    <p class="mb-0 fs-5">
+                      {{ pilot.name }} <span class="fw-bold text-uppercase">{{ pilot.last_name }}</span>
+                    </p>
+
+                    <div style="height: 2em; width: 2em;">
+                      <img class="h-100" src="/media/{{ pilot.photo }}" alt="{{ pilot.name }} Photo" />
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+
+            <div class="py-3 d-flex justify-content-center" style="background: url({% static 'image/bg_pattern.png' %}); background-size: 8px;">
+              <img style="max-width: 100%;" src="/media/{{ team.car }}" alt="{{ team.name }} Car" />
+            </div>
+
+            {% if request.user.is_authenticated %}
+              <hr class="my-3" />
+
+              <div class="d-flex justify-content-end">
+                <a class="btn btn-outline-danger" href="{% url 'borrar_equipo' team.id %}">Borrar</a>
+                <a class="btn btn-secondary ms-2" href="{% url 'editar_equipo' team.id %}">Editar</a>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

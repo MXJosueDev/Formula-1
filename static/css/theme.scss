@@ -1,0 +1,212 @@
+// General
+$primary: #dd0404;
+$body-bg: #15151d;
+$body-color: white;
+
+$body-secondary-bg: #f8f4f1;
+
+$font-family-base: 'Titillium Web', sans-serif;
+
+$headings-font-family: 'Ubuntu', sans-serif;
+$headings-font-weight: 700;
+
+// Forms
+.form-container {
+	max-width: 900px !important;
+}
+
+$input-bg: white;
+$input-color: $body-bg;
+$input-border-color: $body-bg;
+$input-focus-box-shadow: 0;
+$input-focus-border-color: $body-bg;
+
+$form-label-color: $body-bg;
+
+$input-placeholder-color: rgba($body-bg, 0.5);
+
+// Navbar
+$navbar-padding-y: 0;
+
+$navbar-toggler-focus-width: 0.1rem;
+$navbar-light-color: white;
+$navbar-light-active-color: white;
+$navbar-light-toggler-border-color: white;
+
+$navbar-nav-link-padding-x: 1.5rem;
+$nav-link-padding-y: 1rem;
+
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link.show {
+	text-decoration: underline;
+}
+
+@media (min-width: 992px) {
+	.navbar-nav .nav-link.active,
+	.navbar-nav .nav-link.show {
+		background: #1a1a1a;
+
+		text-decoration: none;
+	}
+}
+
+.text-justify {
+	text-align: justify;
+}
+
+.scale-x {
+	transform: scaleX(-1);
+}
+
+.border-10 {
+	border-width: 10px !important;
+}
+
+$borderTransition: border-color 0.25s ease-in-out;
+
+// Content Wrapper
+
+// $wrapperBorder: 1px solid rgba($body-secondary-bg, 0.4);
+$wrapperBorderRadius: 2rem;
+$wrapperPadding: 1rem;
+
+.vr,
+.vr-color {
+	--vr-bg-color: currentcolor;
+
+	background-color: var(--vr-bg-color) !important;
+
+	width: 0.3rem !important;
+
+	opacity: 1 !important;
+}
+
+.contentWrapper {
+	--content-wrapper-padding-width: #{$wrapperPadding};
+	--content-wrapper-border-width: 1px;
+	--content-wrapper-border-color: #{rgba($body-secondary-bg, 0.4)};
+
+	width: 100%;
+
+	border: var(--content-wrapper-border-width) solid
+		var(--content-wrapper-border-color);
+
+	transition: $borderTransition;
+}
+
+.contentWrapper-br {
+	padding-right: var(--content-wrapper-padding-width);
+	padding-bottom: var(--content-wrapper-padding-width);
+
+	border-top: 0;
+	border-left: 0;
+
+	border-bottom-right-radius: $wrapperBorderRadius;
+}
+
+.contentWrapper-tr {
+	padding-right: var(--content-wrapper-padding-width);
+	padding-top: var(--content-wrapper-padding-width);
+
+	border-bottom: 0;
+	border-left: 0;
+
+	border-top-right-radius: $wrapperBorderRadius;
+}
+
+.contentWrapper-hover:hover {
+	--contentWrapper-hover-border-color: #{$primary};
+
+	animation: $borderTransition;
+
+	border-color: var(--contentWrapper-hover-border-color);
+}
+
+// History Section
+.history-img {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	width: 100%;
+
+	align-items: center;
+	justify-content: center;
+}
+
+.history-img > div {
+	width: 100%;
+
+	background: linear-gradient(
+		135deg,
+		rgba(220, 5, 3, 1) 7%,
+		rgba(150, 98, 98, 0) 25%,
+		rgba(150, 98, 98, 0) 75%,
+		rgba(220, 5, 3, 1) 93%
+	);
+	padding: 0.5rem;
+}
+
+.history-img > div > img {
+	aspect-ratio: 2/1;
+
+	width: 100%;
+}
+
+#loginHero {
+	position: relative;
+}
+
+#loginHero::after {
+	content: '';
+	position: absolute;
+
+	bottom: 0;
+	right: 0;
+
+	width: 100%;
+	height: 100%;
+
+	background: linear-gradient(to top, $body-secondary-bg 0%, transparent 50%);
+}
+
+@media (min-width: 768px) {
+	#loginHero::after {
+		background: linear-gradient(
+			to right,
+			$body-secondary-bg 0%,
+			transparent 50%
+		);
+	}
+}
+
+// Login Section
+#loginFormContainer {
+	min-height: 50vh;
+
+	background-position: center !important;
+	background-size: cover !important;
+	background-repeat: no-repeat !important;
+}
+
+// Gradient Bg
+.red-gradient-bg {
+	background: linear-gradient(
+		97deg,
+		transparent 0%,
+		rgba(176, 1, 18, 1) 100%
+	);
+
+	// background: linear-gradient(
+	// 	157deg,
+	// 	rgba(176, 11, 9, 1) 0%,
+	// 	transparent 81%,
+	// 	transparent 100%
+	// );
+}
+
+// Footer
+footer {
+	background: #808080;
+}
+
+@import '../bootstrap/bootstrap.scss';

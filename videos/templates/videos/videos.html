@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Videos
+{% endblock %}
+
+{% block content %}
+  <div class="container mt-3 mb-5">
+    <h2 class="display-2 fw-bold mb-3">Videos</h2>
+
+    <div class="row gy-4">
+      <div class="col-12 col-lg-9">
+        <fieldset class="border border-start-0 border-primary rounded-5 rounded-start-0 pe-3 py-3" style="border-width: 10px !important;">
+          <legend class="float-none w-auto pe-3 m-0">
+            <h3 class="fs-2 m-0">Mas Visto</h3>
+          </legend>
+
+          <div class="ratio ratio-16x9">
+            <iframe src="{{ most_seen.url }}" title="{{ most_seen.title }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+        </fieldset>
+      </div>
+      <div class="col-12 col-lg-3">
+        <h3 class="fs-3 mb-3">Noticias</h3>
+
+        {% for video in news %}
+          <div class="contentWrapper contentWrapper-br contentWrapper-hover mb-3">
+            <div class="ratio ratio-16x9">
+              <iframe src="{{ video.url }}" title="{{ video.title }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

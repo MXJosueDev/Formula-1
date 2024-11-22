@@ -1,0 +1,39 @@
+{% extends 'form_base.html' %}
+
+{% block title %}
+  Editando Equipo
+{% endblock %}
+
+{% block form_title %}
+  Editando Equipo: {{ team.name }}
+{% endblock %}
+
+{% block form %}
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="mb-3">
+      <label class="form-label" for="id_name">Nombre</label>
+      <input class="form-control" type="text" name="name" value="{{ team.name }}" maxlength="150" required id="id_name" />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label" for="id_team_color">Color (CSS)</label>
+      <input class="form-control" type="text" name="team_color" value="{{ team.team_color }}" maxlength="50" required id="id_team_color" />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label" for="id_logo">Logo</label>
+      <input class="form-control" type="file" name="logo" accept="image/*" id="id_logo" />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label" for="id_car">Carro</label>
+      <input class="form-control" type="file" name="car" accept="image/*" id="id_car" />
+    </div>
+
+    <div class="d-flex justify-content-end">
+      <button type="submit" class="btn btn-primary">Editar Equipo</button>
+    </div>
+  </form>
+{% endblock %}

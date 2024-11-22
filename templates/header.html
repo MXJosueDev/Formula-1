@@ -1,0 +1,52 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-lg bg-primary">
+  <div class="container">
+    <a href="{% url 'historia' %}" class="navbar-brand"><img src="{% static 'image/logo.png' %}" alt="Logo" width="96" height="24" /></a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav w-100 justify-content-center">
+        {% url 'historia' as historia_url %}
+        <a class="nav-link{% if request.path == historia_url %} active{% endif %}" href="{{ historia_url }}">Historia</a>
+        {% url 'pilotos' as pilotos_url %}
+        <a class="nav-link{% if request.path == pilotos_url %} active{% endif %}" href="{{ pilotos_url }}">Clasificación de pilotos</a>
+        {% url 'videos' as videos_url %}
+        <a class="nav-link{% if request.path == videos_url %} active{% endif %}" href="{{ videos_url }}">Videos</a>
+        {% url 'equipos' as equipos_url %}
+        <a class="nav-link{% if request.path == equipos_url %} active{% endif %}" href="{{ equipos_url }}">Equipos</a>
+
+        {% if user.is_authenticated %}
+          <form class="d-lg-none" action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button class="nav-link" type="submit">Cerrar sesion</button>
+          </form>
+        {% else %}
+          {% url 'login' as login_url %}
+          <a class="nav-link d-lg-none{% if request.path == login_url %} active{% endif %}" href="{% url 'login' %}">Iniciar Sesion</a>
+        {% endif %}
+      </div>
+    </div>
+    <div class="d-none d-lg-block">
+      {% if user.is_authenticated %}
+        <form action="{% url 'logout' %}" method="post">
+          {% csrf_token %}
+          <button class="nav-link" type="submit">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0z" />
+              <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708z" />
+            </svg>
+          </button>
+        </form>
+      {% else %}
+        <a class="nav-link" href="{% url 'login' %}">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+          </svg>
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</nav>

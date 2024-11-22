@@ -1,0 +1,3 @@
+{% comment %} {% load compress %} {% compress css %}
+    <link type="text/x-scss" rel="stylesheet" href="{% static 'css/theme.scss' %}" />
+    {% endcompress %} {% endcomment %}

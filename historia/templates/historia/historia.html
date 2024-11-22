@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  Historia
+{% endblock %}
+
+{% block content %}
+  <div class="container my-5">
+    <h2 class="text-center display-2 fw-bold mb-3">Historia</h2>
+    <div class="row">
+      <div class="col-12 col-md-6">
+      <div class="history-img">
+        <div>
+        <img src="{% static 'image/history1.png' %}" alt="Orígenes" />
+        </div>
+      </div>
+      </div>
+      <div class="col-12 col-md-6 d-flex align-items-center">
+      <p class="text-justify">Las carreras de automóviles comenzaron a finales del siglo XIX en Francia, con eventos individuales en caminos de tierra. En 1950, la Federación Internacional del Automóvil (FIA) organizó el primer Campeonato Mundial de Pilotos, conocido como Fórmula 12.</p>
+      </div>
+    </div>
+    <div class="row flex-column-reverse flex-md-row mt-3">
+      <div class="col-12 col-md-6 d-flex align-items-center">
+      <p class="text-justify">El primer Gran Premio se celebró el 13 de mayo de 1950 en el circuito de Silverstone, y el italiano Giuseppe Farina se convirtió en el primer campeón mundial. Las primeras décadas de la Fórmula 1 estuvieron dominadas por equipos como Ferrari, Alfa Romeo y Maserati1.</p>
+      </div>
+      <div class="col-12 col-md-6">
+      <div class="history-img">
+        <div>
+        <img src="{% static 'image/history2.png' %}" alt="Primeros años" />
+        </div>
+      </div>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-12 col-md-6">
+      <div class="history-img">
+        <div>
+        <img src="{% static 'image/history2.png' %}" alt="Evolución y Popularidad" />
+        </div>
+      </div>
+      </div>
+      <div class="col-12 col-md-6 d-flex align-items-center">
+      <p class="text-justify">A lo largo de los años, la Fórmula 1 ha evolucionado significativamente, incorporando tecnologías avanzadas y atrayendo a una audiencia global. Grandes pilotos como Juan Manuel Fangio, Ayrton Senna y Michael Schumacher se convirtieron en leyendas del deporte.</p>
+      </div>
+      <div class="row flex-column-reverse flex-md-row mt-3">
+      <div class="col-12 col-md-6 d-flex align-items-center">
+        <p class="text-justify">En la era moderna, la Fórmula 1 sigue siendo la competición de automovilismo más prestigiosa del mundo. Equipos como Mercedes, Red Bull y Ferrari continúan dominando el campeonato, y pilotos como Lewis Hamilton y Max Verstappen han alcanzado grandes éxitos.</p>
+      </div>
+      <div class="col-12 col-md-6">
+        <div class="history-img">
+        <div>
+          <img src="{% static 'image/history2.png' %}" alt="Era Moderna" />
+        </div>
+        </div>
+      </div>
+      </div>
+      <div class="row mt-3">
+      <div class="col-12 col-md-6">
+        <div class="history-img">
+        <div>
+          <img src="{% static 'image/history2.png' %}" alt="Impacto Cultural" />
+        </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 d-flex align-items-center">
+        <p class="text-justify">La Fórmula 1 ha dejado una huella profunda en la cultura popular, inspirando películas, videojuegos y una amplia gama de productos de mercadotecnia. Su combinación de velocidad, estrategia y habilidad técnica la convierte en una de las formas de deporte más emocionantes del mundo.</p>
+      </div>
+      </div>
+    </div>
+    </div>
+{% endblock %}
